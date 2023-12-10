@@ -1,5 +1,5 @@
 <?php
-require('includes/header.php');
+include 'includes/header.php';
 ?>
 
 <!-- Page Heading -->
@@ -9,5 +9,5 @@ require('includes/header.php');
 
 
 <?php
-require('includes/footer.php');
+include 'includes/footer.php';
 ?>  
