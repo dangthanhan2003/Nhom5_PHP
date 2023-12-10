@@ -63,6 +63,17 @@ class category
             }
         }
     }
+    public function delete_category($id){
+        $query = "DELETE FROM categories WHERE id = '$id'";
+        $result = $this->db->delete($query);
+        if ($result) {
+            $alert = "<span>Xóa thành công </span>";
+            return $alert;
+        } else {
+            $alert = "<span>Xóa không thành công </span>";
+            return $alert;
+        }
+    }
     public function getcatbyId($id)
     {
         $query = "SELECT * FROM categories WHERE id = '$id'";

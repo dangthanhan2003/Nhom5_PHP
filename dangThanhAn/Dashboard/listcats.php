@@ -6,6 +6,11 @@ include 'classes/category.php';
 ?>
 <?php
 $cat = new category();
+if (isset($_GET['delid'])) {
+    $id = $_GET['delid'];
+    $delCat = $cat->delete_category($id);
+}
+
 ?>
 <div>
 
@@ -15,6 +20,11 @@ $cat = new category();
         </div>
         <div class="card-body">
             <div class="table-responsive">
+                <?php
+                if (isset($delCat)) {
+                    echo $delCat;
+                }
+                ?>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -33,20 +43,20 @@ $cat = new category();
                     <tbody>
                         <?php
                         $show_cat = $cat->show_category();
-                        if ($show_cat){
+                        if ($show_cat) {
                             $i = 0;
-                            while($result = $show_cat->fetch_assoc()){
-                                $i++;              
+                            while ($result = $show_cat->fetch_assoc()) {
+                                $i++;
                         ?>
-                            <tr>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $result['catName'] ?> </td>
-                                <td> <a class="btn btn-warning" href="editcategory.php?catid=<?php echo $result['id'] ?>">Edit</a>
-                                    <a class="btn btn-danger" href="?catid=<?php echo $result['id'] ?>" onclick="return confirm('Bạn chắc chắn xóa mục này?');">Delete</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td><?php echo $i; ?></td>
+                                    <td><?php echo $result['catName'] ?> </td>
+                                    <td> <a class="btn btn-warning" href="editcategory.php?catid=<?php echo $result['id'] ?>">Edit</a>
+                                        <a class="btn btn-danger" href="?delid=<?php echo $result['id'] ?>" onclick="return confirm('Bạn chắc chắn xóa mục này?');">Delete</a>
+                                    </td>
+                                </tr>
                         <?php
-                        }
+                            }
                         }
                         ?>
                     </tbody>
