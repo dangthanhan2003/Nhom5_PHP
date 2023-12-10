@@ -1,3 +1,8 @@
+<?php
+  include './lib/session.php';
+  Session::checkSession();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +32,7 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
   </head>
 
-  <body id="page-top">
+  <body id="page-top">    
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->

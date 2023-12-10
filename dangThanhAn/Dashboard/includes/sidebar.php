@@ -57,56 +57,6 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseOne"
-            aria-expanded="true"
-            aria-controls="collapseOne"
-          >
-            <i class="fas fa-calendar-day"></i>
-            <span>Brands-Thương hiệu</span>
-          </a>
-          <div
-            id="collapseOne"
-            class="collapse"
-            aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar"
-          >
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Các chức năng:</h6>
-              <a class="collapse-item" href="./listbrands.php">Liệt kê</a>
-              <a class="collapse-item" href="./themthuonghieu.php">Thêm mới</a>
-            </div>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseTwo"
-            aria-expanded="true"
-            aria-controls="collapseTwo"
-          >
-            <i class="fas fa-calendar-day"></i>
-            <span>Danh mục sản phẩm</span>
-          </a>
-          <div
-            id="collapseTwo"
-            class="collapse"
-            aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar"
-          >
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Các chức năng:</h6>
-              <a class="collapse-item" href="listsanpham.php">Liệt kê</a>
-              <a class="collapse-item" href="themsanpham.php">Thêm mới</a>
-            </div>
-          </div>
-        </li>
 
         <li class="nav-item">
           <a
