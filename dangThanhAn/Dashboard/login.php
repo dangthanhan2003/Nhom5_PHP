@@ -2,7 +2,6 @@
     include "./classes/adminlogin.php";
 ?>
 <?php
-
     $class = new adminlogin();
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $adminuser = $_POST['adminuser'];

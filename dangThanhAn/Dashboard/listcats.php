@@ -14,7 +14,6 @@ require('includes/header.php');
                                         <tr>
                                             <th>ID</th>
                                             <th>Category</th>
-                                            <th>Status</th>
                                             <th>Operation</th>
                                         </tr>
                                     </thead>
@@ -22,7 +21,6 @@ require('includes/header.php');
                                         <tr>
                                             <th>ID</th>
                                             <th>Category</th>
-                                            <th>Status</th>
                                             <th>Operation</th>
                                         </tr>
                                     </tfoot>
@@ -37,7 +35,6 @@ require('includes/header.php');
         <tr>
             <td><?php echo $row['id']?></td>
             <td><?php echo $row['name']?></td>
-            <td><?php echo $row['status']?></td>
             <td>             <a class="btn btn-warning" href="editcategory.php?id=<?=$row['id']?>">Edit</a>  
                     <a class="btn btn-danger" 
                     href="deletecategory.php?id=<?=$row['id']?>"

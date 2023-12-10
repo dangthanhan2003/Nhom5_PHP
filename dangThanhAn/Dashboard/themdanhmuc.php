@@ -1,6 +1,17 @@
 <?php 
 require('includes/header.php');
 ?>
+<?php
+include 'classes/category.php';
+?>
+<?php
+    $cat = new category();
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $catName = $_POST['catName'];
+
+        $insertCat = $cat->insert_category($catName);
+    }
+?>
 
 <div class="container">
 
@@ -13,13 +24,18 @@ require('includes/header.php');
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Thêm mới danh mục sản phẩm</h1>
                     </div>
-                    <form class="user" method="post" action="addcategory.php">                        
+                    <?php
+                    if(isset($insertCat)){
+                        echo $insertCat;
+                    }
+                    ?>
+                    <form class="user" method="post" action="themdanhmuc.php">                        
                     <div class="form-group">
                         <input type="text" class="form-control form-control-user"
-                            id="name" name="name" aria-describedby="emailHelp"
-                            placeholder="Tên danh mục">
+                            id="name" name="catName" aria-describedby="emailHelp"
+                            placeholder="Nhập tên danh mục">
                     </div>
-                    <button class="btn btn-primary">Tạo mới</button>
+                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Xác nhận">
                     </form>
                     <hr>
                     

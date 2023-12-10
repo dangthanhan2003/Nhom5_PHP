@@ -16,9 +16,8 @@ if (isset($_POST['btnUpdate'])) {
     //neu nut Cap nhat duoc nhan
     //lay name
     $name = $_POST['name'];
-    $status = $_POST['status'];
     //thuc hien viec cap nhat
-    $sql_str2 = "update categories set name='$name', status='$status' where id=$id";
+    $sql_str2 = "update categories set name='$name' where id=$id";
 
     mysqli_query($conn, $sql_str2);
 
@@ -42,12 +41,6 @@ if (isset($_POST['btnUpdate'])) {
                             <form class="user" method="post" action="#">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="name" name="name" aria-describedby="emailHelp" placeholder="Tên thương hiệu" value=<?php echo $brand['name'] ?>>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" id="status" name="status">
-                                        <option value="active" <?php $brand['status'] = 'active'; ?>>Active</option>
-                                        <option value="inactive" <?php $brand['status'] = 'inactive'; ?>>Inactive</option>
-                                    </select>
                                 </div>
                                 <button class="btn btn-primary" name="btnUpdate">Cập nhật</button>
                             </form>
