@@ -4,7 +4,7 @@ include_once './helpers/format.php';
 ?>
 
 <?php
-class category
+class product
 {
     private $db;
     private $fm;
@@ -15,17 +15,34 @@ class category
         $this->fm = new Format();
     }
 
-    public function insert_category($catName)
+    public function insert_product($data,$files)
     {
+        
+        $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
+        $summary = mysqli_real_escape_string($this->db->link, $data['summary']);
+        $description = mysqli_real_escape_string($this->db->link, $data['description']);
+        $stock = mysqli_real_escape_string($this->db->link, $data['stock']);
+        $purchase = mysqli_real_escape_string($this->db->link, $data['purchase']);
+        $price = mysqli_real_escape_string($this->db->link, $data['price']);
+        $category = mysqli_real_escape_string($this->db->link, $data['category']);
+        //Kiêm tra và lấy ảnh cho vào folder uploads
+        $permited = array('jpg', 'jpeg', 'png', 'gif');
+        $file_name = $_FILES['images']['name'];
+        $file_size = $_FILES['images']['size'];
+        $file_temp = $_FILES['images']['tmp_name'];
 
-        $catName = $this->fm->validation($catName);
-        $catName = mysqli_real_escape_string($this->db->link, $catName);
+        $div = explode('.', $file_name);
+        $file_ext = strtolower(end($div));
+        $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
+        $uploaded_image = "uploads/".$unique_image;
 
-        if (empty($catName)) {
-            $alert = "<span>Vui lòng nhập tên Danh mục</span>";
+        if ($productName=="" || $summary=="" || $description=="" || $stock=="" || $purchase=="" || $price=="" || $category=="" || $file_name=="") {
+            $alert = "<span>Vui lòng không để trống</span>";
             return $alert;
         } else {
-            $query = "INSERT INTO categories(catName) VALUES('$catName') ";
+            move_uploaded_file($file_temp,$uploaded_image);
+            $query = "INSERT INTO products(productName, summary, description , stock, purchase, price, category_id, images) 
+            VALUES('$productName','$summary','$description','$stock','$purchase','$price','$category','$unique_image') ";
             $result = $this->db->insert($query);
             if ($result) {
                 $alert = "<span>Thêm Thành công </span>";
@@ -36,12 +53,13 @@ class category
             }
         }
     }
-    public function show_category()
+    public function show_product()
     {
-        $query = "SELECT * FROM categories order by id desc";
+        $query = "SELECT * FROM products order by id desc";
         $result = $this->db->select($query);
         return $result;
     }
+    /*
     public function update_category($catName, $id)
     {
         $catName = $this->fm->validation($catName);
@@ -80,5 +98,7 @@ class category
         $result = $this->db->select($query);
         return $result;
     }
+    */
 }
+
 ?>

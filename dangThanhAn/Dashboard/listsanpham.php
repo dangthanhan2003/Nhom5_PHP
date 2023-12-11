@@ -1,99 +1,98 @@
-<?php 
-require('includes/header.php');
-
-function anhdaidien($arrstr,$height){
-    //$arrstr la mang cac anh co dang anh1;anh2;anh3
-    //tach chuoi nay thanh mang - tach voi ;
-    // $arr = $arrstr.split(';');
-    $arr = explode(';', $arrstr);
-    return "<img src='$arr[0]' height='$height' />";
-}
+<?php
+require_once('includes/header.php');
 ?>
-
-
-
+<?php
+include_once 'classes/category.php';
+include_once 'classes/product.php';
+include_once 'helpers/format.php';
+?>
+<?php 
+$pd = new product();
+$fm = new Format(); 
+?>
 <div>
 
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="row">
+                <div class="col-xl-9 col-md-6 mb-4">
+                    <h6 class="m-0 font-weight-bold text-primary">Sản phẩm</h6>
+                </div>
+                <div class="col-xl-3 col md-6 mb-8">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tên</th>
+                            <th>Ảnh</th>
+                            <th>Danh mục</th>
+                            <th>Mô tả</th>
+                            <th>Tóm tắt</th>
+                            <th>Giá mua </th>
+                            <th>Giá bán </th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Tên</th>
+                            <th>Ảnh</th>
+                            <th>Danh mục</th>
+                            <th>Mô tả</th>
+                            <th>Tóm tắt</th>
+                            <th>Giá mua </th>
+                            <th>Giá bán </th>
+                            <th>Hành động</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <?php
+                        
 
-    
-
-<div class="card shadow mb-4">
-<div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Sản phẩm</h6>
-</div>
-<div class="card-body">
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>Tên sản phẩm</th>
-                    <th>Ảnh đại diện</th>
-                    <th>Danh mục</th>
-                    <th>Thương hiệu</th>
-                    <th>Giá mua </th>
-                    <th>Giá bán </th>                    
-                    <th>Trạng thái</th>
-                    <th>Hành động</th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <th>Tên sản phẩm</th>
-                    <th>Ảnh đại diện</th>
-                    <th>Danh mục</th>
-                    <th>Thương hiệu</th>    
-                    <th>Giá mua </th>
-                    <th>Giá bán </th>                   
-                    <th>Trạng thái</th>
-                    <th>Hành động</th>
-                </tr>
-            </tfoot>
-            <tbody>
-            <?php 
-    require('../db/conn.php');
-    $sql_str = "select 
-    products.id as pid,
-    products.name as pname,
-    purchase as purchase,
-    price as price,
-    images,
-    categories.name as cname,
-    brands.name as bname,
-    products.status as pstatus
-    from products, categories, brands where products.category_id=categories.id and products.brand_id = brands.id order by products.name";
-    $result = mysqli_query($conn, $sql_str);
-    while ($row = mysqli_fetch_assoc($result)){
-        ?>
-
-        
-            <tr>
-                <td><?=$row['pname']?></td>
-                <td><?=anhdaidien($row['images'], "100px")?></td>
-                <td><?=$row['cname']?></td>
-                <td><?=$row['bname']?></td>
-                <td><?=$row['purchase']?></td>
-                <td><?=$row['price']?></td>
-                <td><?=$row['pstatus']?></td>
-                <td>
-                    <a class="btn btn-warning" href="editproduct.php?id=<?=$row['pid']?>">Edit</a>  
-                    <a class="btn btn-danger" 
-                    href="deleteproduct.php?id=<?=$row['pid']?>"
-                    onclick="return confirm('Bạn chắc chắn xóa sản phẩm này?');">Delete</a>
-                </td>
-                
-            </tr>
-            <?php
-    }
-    ?>                                
+                        $pdlist = $pd->show_product();
+                        if ($pdlist) {
+                            while ($result = $pdlist->fetch_assoc()) {
+                        ?>
+                                <tr>
+                                    <td><?php echo $result['productName'] ?></td>
+                                    <td><img src="uploads/<?php echo trim($result['images'])?>" width="100"></td>
+                                    <td><?php echo $result['category_id'] ?></td>
+                                    <td><?php echo $fm->textShorten($result['description'], 10) ?></td>
+                                    <td><?php echo $result['summary'] ?></td>
+                                    <td><?php echo $result['purchase'] ?></td>
+                                    <td><?php echo $result['price'] ?></td>
+                                    <td>
+                                    <a class="btn btn-warning" href="">Edit</a>
+                                        <a class="btn btn-danger" href="" onclick="return confirm('Bạn chắc chắn xóa mục này?');">Delete</a>
+                                    </td>
+                                </tr>
+                        <?php
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
-         
 
-      
+
+
 <?php
-require('includes/footer.php');
+require_once('includes/footer.php');
 ?>

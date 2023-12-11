@@ -1,8 +1,8 @@
 <?php 
-require('includes/header.php');
+require_once('includes/header.php');
 ?>
 <?php
-include 'classes/category.php';
+include_once 'classes/category.php';
 ?>
 <?php
     $cat = new category();
@@ -49,5 +49,5 @@ include 'classes/category.php';
 
       
 <?php
-require('includes/footer.php');
+require_once('includes/footer.php');
 ?>

@@ -1,5 +1,5 @@
 <?php
-include 'includes/header.php';
+include_once 'includes/header.php';
 ?>
 
 <!-- Page Heading -->
@@ -9,5 +9,5 @@ include 'includes/header.php';
 
 
 <?php
-include 'includes/footer.php';
+include_once 'includes/footer.php';
 ?>  

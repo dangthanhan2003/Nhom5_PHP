@@ -1,8 +1,8 @@
 <?php
-require('includes/header.php');
+require_once('includes/header.php');
 ?>
 <?php
-include 'classes/category.php';
+include_once 'classes/category.php';
 ?>
 <?php
 $cat = new category();
