@@ -9,12 +9,22 @@ include_once 'helpers/format.php';
 <?php 
 $pd = new product();
 $fm = new Format(); 
+if (isset($_GET['productid'])) {
+    $id = $_GET['productid'];
+    $delProduct = $pd->delete_product($id);
+}
 ?>
+
 <div>
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="row">
+                <?php
+                    if(isset($delProduct)){
+                        echo $delProduct;
+                    }
+                ?>
                 <div class="col-xl-9 col-md-6 mb-4">
                     <h6 class="m-0 font-weight-bold text-primary">Sản phẩm</h6>
                 </div>
@@ -70,14 +80,14 @@ $fm = new Format();
                                 <tr>
                                     <td><?php echo $result['productName'] ?></td>
                                     <td><img src="uploads/<?php echo trim($result['images'])?>" width="100"></td>
-                                    <td><?php echo $result['category_id'] ?></td>
+                                    <td><?php echo $result['catName'] ?></td>
                                     <td><?php echo $fm->textShorten($result['description'], 10) ?></td>
                                     <td><?php echo $result['summary'] ?></td>
                                     <td><?php echo $result['purchase'] ?></td>
                                     <td><?php echo $result['price'] ?></td>
                                     <td>
-                                    <a class="btn btn-warning" href="">Edit</a>
-                                        <a class="btn btn-danger" href="" onclick="return confirm('Bạn chắc chắn xóa mục này?');">Delete</a>
+                                    <a class="btn btn-warning" href="productedit.php?productid=<?php echo $result['id'] ?>">Edit</a>
+                                    <a class="btn btn-danger" href="?productid=<?php echo $result['id'] ?>" onclick="return confirm('Bạn chắc chắn xóa mục này?');">Delete</a>
                                     </td>
                                 </tr>
                         <?php
