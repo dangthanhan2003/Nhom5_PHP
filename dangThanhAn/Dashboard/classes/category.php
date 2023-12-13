@@ -52,7 +52,7 @@ class category
             $alert = "<span>Vui lòng nhập tên Danh mục</span>";
             return $alert;
         } else {
-            $query = "UPDATE categories SET catName = '$catName' WHERE id = '$id'";
+            $query = "UPDATE categories SET name = '$catName' WHERE id = '$id'";
             $result = $this->db->update($query);
             if ($result) {
                 $alert = "<span>Sửa thành công </span>";

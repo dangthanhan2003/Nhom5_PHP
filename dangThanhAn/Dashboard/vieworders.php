@@ -58,7 +58,7 @@ if (isset($_POST['btnUpdate'])) {
                                         <div class="row">
                                             <div class="col-md-3">Khách hàng:</div>
                                             <div class="col-md-9">
-                                                <?= $row['name'] ?>
+                                                <?= $row['fullName'] ?>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -113,7 +113,7 @@ if (isset($_POST['btnUpdate'])) {
 
                                         </tr>
                                         <?php
-                                        $sql = "select *, products.name as pname, order_details.price as oprice, order_details.created_at as time  from products, order_details where products.id=order_details.product_id and order_id=$id";
+                                        $sql = "select *, products.productName as pname, order_details.price as oprice, order_details.created_at as time  from products, order_details where products.id=order_details.product_id and order_id=$id";
                                         $res = mysqli_query($conn, $sql);
                                         $stt = 0;
                                         $tongtien = 0;

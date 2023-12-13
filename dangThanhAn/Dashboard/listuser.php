@@ -2,16 +2,15 @@
 require_once('includes/header.php');
 ?>
 <?php
-include_once 'classes/category.php';
-include_once 'classes/product.php';
+include_once 'classes/users.php';
 include_once 'helpers/format.php';
 ?>
 <?php 
-$pd = new product();
+$user = new users();
 $fm = new Format(); 
-if (isset($_GET['productid'])) {
-    $id = $_GET['productid'];
-    $delProduct = $pd->delete_product($id);
+if (isset($_GET['userid'])) {
+    $id = $_GET['userid'];
+    $delUser = $user->delete_user($id);
 }
 ?>
 
@@ -21,8 +20,8 @@ if (isset($_GET['productid'])) {
         <div class="card-header py-3">
             <div class="row">
                 <?php
-                    if(isset($delProduct)){
-                        echo $delProduct;
+                    if(isset($delUser)){
+                        echo $delUser;
                     }
                 ?>
                 <div class="col-xl-9 col-md-6 mb-4">
@@ -48,46 +47,37 @@ if (isset($_GET['productid'])) {
                     <thead>
                         <tr>
                             <th>Tên</th>
-                            <th>Ảnh</th>
-                            <th>Danh mục</th>
-                            <th>Mô tả</th>
-                            <th>Tóm tắt</th>
-                            <th>Giá mua </th>
-                            <th>Giá bán </th>
+                            <th>Email</th>
+                            <th>Địa chỉ</th>
+                            <th>Password</th>
+                            <th>SĐT</th>
                             <th>Hành động</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Tên</th>
-                            <th>Ảnh</th>
-                            <th>Danh mục</th>
-                            <th>Mô tả</th>
-                            <th>Tóm tắt</th>
-                            <th>Giá mua </th>
-                            <th>Giá bán </th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Password</th>
+                            <th>SĐT</th>
                             <th>Hành động</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         <?php
-                        
-
-                        $pdlist = $pd->show_product();
-                        if ($pdlist) {
-                            while ($result = $pdlist->fetch_assoc()) {
+                        $userlist = $user->show_user();
+                        if ($userlist) {
+                            while ($result = $userlist->fetch_assoc()) {
                         ?>
                                 <tr>
                                     <td><?php echo $result['name'] ?></td>
-                                    <td><img src="uploads/<?php echo trim($result['images'])?>" width="100"></td>
-                                    <td><?php echo $result['catName'] ?></td>
-                                    <td><?php echo $fm->textShorten($result['description'], 10) ?></td>
-                                    <td><?php echo $result['summary'] ?></td>
-                                    <td><?php echo $result['purchase'] ?></td>
-                                    <td><?php echo $result['price'] ?></td>
+                                    <td><?php echo $result['email'] ?></td>
+                                    <td><?php echo $fm->textShorten($result['address'], 10) ?></td>
+                                    <td><?php echo $fm->textShorten(md5($result['password']), 5) ?></td>
+                                    <td><?php echo $result['phone'] ?></td>
                                     <td>
-                                    <a class="btn btn-warning" href="productedit.php?productid=<?php echo $result['id'] ?>">Edit</a>
-                                    <a class="btn btn-danger" href="?productid=<?php echo $result['id'] ?>" onclick="return confirm('Bạn chắc chắn xóa mục này?');">Delete</a>
+                                    <a class="btn btn-danger" href="?userid=<?php echo $result['id'] ?>" onclick="return confirm('Bạn chắc chắn xóa người dùng này?');">Delete</a>
                                     </td>
                                 </tr>
                         <?php

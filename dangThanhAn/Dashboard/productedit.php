@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                         ?>
                                 <form class="user" method="post" action="" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" name="productName" aria-describedby="emailHelp" value="<?php echo $result_product['productName'] ?>">
+                                        <input type="text" class="form-control form-control-user" name="productName" aria-describedby="emailHelp" value="<?php echo $result_product['name'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Các hình ảnh cho sản phẩm:</label> <br>
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                                                             if ($result['id'] == $result_product['category_id']) {
                                                                 echo 'selected';
                                                             }
-                                                            ?> value="<?php echo $result['id'] ?>"><?php echo $result['catName'] ?></option>
+                                                            ?> value="<?php echo $result['id'] ?>"><?php echo $result['name'] ?></option>
                                             <?php
                                                 }
                                             }

@@ -17,7 +17,6 @@ class product
 
     public function insert_product($data, $files)
     {
-
         $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
         $summary = mysqli_real_escape_string($this->db->link, $data['summary']);
         $description = mysqli_real_escape_string($this->db->link, $data['description']);
@@ -41,7 +40,7 @@ class product
             return $alert;
         } else {
             move_uploaded_file($file_temp, $uploaded_image);
-            $query = "INSERT INTO products(productName, summary, description , stock, purchase, price, category_id, images) 
+            $query = "INSERT INTO products(name, summary, description , stock, purchase, price, category_id, images) 
             VALUES('$productName','$summary','$description','$stock','$purchase','$price','$category','$unique_image') ";
             $result = $this->db->insert($query);
             if ($result) {
@@ -55,7 +54,7 @@ class product
     }
     public function show_product()
     {
-        $query = "SELECT products.*, categories.catName 
+        $query = "SELECT products.*, categories.name as catName 
         FROM products INNER JOIN categories ON products.category_id = categories.id
         order by products.id desc";
         $result = $this->db->select($query);
@@ -97,7 +96,7 @@ class product
                 }
                 move_uploaded_file($file_temp,$uploaded_image);
                 $query = "UPDATE products 
-            SET productName = '$productName',
+            SET name = '$productName',
             category_id = '$category',
             summary = '$summary',
             description = '$description',
@@ -109,7 +108,7 @@ class product
             } else {
                 //Nếu không đổi ảnh
                 $query = "UPDATE products 
-                SET productName = '$productName',
+                SET name = '$productName',
                 category_id = '$category',
                 summary = '$summary',
                 description = '$description',

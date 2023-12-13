@@ -50,7 +50,7 @@ if (isset($_GET['delid'])) {
                         ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>
-                                    <td><?php echo $result['catName'] ?> </td>
+                                    <td><?php echo $result['name'] ?> </td>
                                     <td> <a class="btn btn-warning" href="editcategory.php?catid=<?php echo $result['id'] ?>">Edit</a>
                                         <a class="btn btn-danger" href="?delid=<?php echo $result['id'] ?>" onclick="return confirm('Bạn chắc chắn xóa mục này?');">Delete</a>
                                     </td>
