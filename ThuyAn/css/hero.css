@@ -1,0 +1,15 @@
+.sidebar__item ul,
+.hero__categories ul {
+    padding-left: 0;
+}
+
+.sidebar__item ul a,
+.hero__categories ul a {
+    display: block;
+    padding: 10px 0 0 15px;
+    transition: all ease 0.5s;
+}
+.sidebar__item ul a:hover,
+.hero__categories ul a:hover {
+    background-color: #eeeeee;
+}
