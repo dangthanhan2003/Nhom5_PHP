@@ -42,7 +42,7 @@
             aria-controls="collapseSeven"
           >
             <i class="fas fa-calendar-day"></i>
-            <span>Category-Danh mục</span>
+            <span>Category-Danh mục sản phẩm</span>
           </a>
           <div
             id="collapseSeven"
@@ -54,6 +54,57 @@
               <h6 class="collapse-header">Các chức năng:</h6>
               <a class="collapse-item" href="./listcats.php">Liệt kê</a>
               <a class="collapse-item" href="./themdanhmuc.php">Thêm mới</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseNine"
+            aria-expanded="true"
+            aria-controls="collapseNine"
+          >
+            <i class="fas fa-calendar-day"></i>
+            <span>Danh mục tin tức</span>
+          </a>
+          <div
+            id="collapseNine"
+            class="collapse"
+            aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Các chức năng:</h6>
+              <a class="collapse-item" href="./listnewscats.php">Liệt kê</a>
+              <a class="collapse-item" href="./themdanhmuctintuc.php">Thêm mới</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            href="#"
+            data-toggle="collapse"
+            data-target="#collapseTen"
+            aria-expanded="true"
+            aria-controls="collapseTen"
+          >
+            <i class="fas fa-calendar-day"></i>
+            <span>Tin tức</span>
+          </a>
+          <div
+            id="collapseTen"
+            class="collapse"
+            aria-labelledby="headingTwo"
+            data-parent="#accordionSidebar"
+          >
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Các chức năng:</h6>
+              <a class="collapse-item" href="./listnews.php">Liệt kê</a>
+              <a class="collapse-item" href="./themtintuc.php">Thêm mới</a>
             </div>
           </div>
         </li>

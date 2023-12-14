@@ -25,7 +25,7 @@ if (isset($_GET['userid'])) {
                     }
                 ?>
                 <div class="col-xl-9 col-md-6 mb-4">
-                    <h6 class="m-0 font-weight-bold text-primary">Sản phẩm</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Người dùng</h6>
                 </div>
                 <div class="col-xl-3 col md-6 mb-8">
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
