@@ -1,0 +1,11 @@
+article {
+    padding: 30px 0 50px;
+    width: 85%;
+    margin: auto;
+}
+
+article>h3 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+

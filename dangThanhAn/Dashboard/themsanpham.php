@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                                     if ($catlist) {
                                         while ($result = $catlist->fetch_assoc()) {
                                     ?>
-                                            <option value="<?php echo $result['id'] ?>"><?php echo $result['catName'] ?></option>
+                                            <option value="<?php echo $result['id'] ?>"><?php echo $result['name'] ?></option>
                                     <?php
                                         }
                                     }
