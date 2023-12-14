@@ -1,0 +1,140 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "mouse-500", Arial, Helvetica, sans-serif;
+}
+
+article {
+    max-width: 350px;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-main {
+    width: 100%;
+    height: auto;
+    padding-bottom: 40px;
+    box-shadow: 0 0 5px #ccc;
+    position: relative;
+    margin: auto;
+}
+
+.form-main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #00ab9f;
+}
+
+.form-main h4 {
+    font-size: 1.3rem;
+    color: #444444C2;
+    padding: 17px 0;
+    text-align: center;
+}
+
+.form-main form {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.form-control {
+    width: 90%;
+    margin: auto;
+}
+
+.form-control>span {
+    color: red;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 8px;
+    margin-bottom: -10px;
+}
+
+.form-group {
+    height: 45px;
+    border: 0.5px solid #ccc;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.form-group label {
+    color: #444444C2;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 90%;
+    height: 100%;
+    border: none;
+    padding-left: 10px;
+    background-color: #fff;
+    font-size: 1.0rem;
+    border-radius: 0 5px 5px 0;
+}
+
+.form-group input:focus {
+    outline: none;
+    border: 0.5px solid #00ab9f;
+}
+
+.btn-submit {
+    width: 90%;
+    height: 45px;
+    border: 0.5px solid #ccc;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.btn-submit button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #00ab9f;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.btn-submit button:hover {
+    opacity: 0.7;
+}
+
+.link-form {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    color: #444444C2;
+}
+
+.link-forgotPsw {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.link-forgotPsw a,
+.link-form a {
+    color: #000;
+    text-decoration: none;
+}
+.link-forgotPsw a:hover,
+.link-form a:hover {
+    text-decoration: underline;
+}
+
